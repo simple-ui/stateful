@@ -24,7 +24,7 @@ bower install --save adaptiveui-stateful
 
 ### Lodash Dependency
 
-This library requires all of lodash. It only imports the methods it needs, supporting use of [rollup.js](http://rollupjs.org/) or [lodash-modularize](https://www.npmjs.com/package/lodash-modularize).
+This library requires a small set of lodash. Use [lodash-modularize](https://www.npmjs.com/package/lodash-modularize) to limit how much of lodash is included in your project.
 
 ## Quick Usage
 
@@ -44,7 +44,7 @@ var state1 = {
   onDestroy() {
     // when object is destroyed
   },
-  onDecorate(currentState, originalStatefulObject) {
+  onDecorate(stateEnabledObject) {
     return {
       f1() {
 
@@ -56,7 +56,7 @@ var state1 = {
 var s1 = Stateful(this);
 
 s1.push(state1);
-s1.top() === state1;
+s1.current() === state1;
 s1.list() === [state1];
 state1 = s1.pop();
 
