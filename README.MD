@@ -8,6 +8,8 @@
 
 A (in)finite state machine specialized in simplifying presentation logic.
 
+The `Stateful` decorator can add state to any object. Typically an object would add a state variable or inherit state. With `Stateful` you add state capabilities to an object and manage that through a simple interface.
+
 ## Install
 
 Install with npm.
@@ -31,7 +33,15 @@ This library requires a small set of lodash. Use [lodash-modularize](https://www
 ```js
 import Stateful from "adaptiveui/stateful"
 
-var state1 = {
+var object = {
+  value: 'no state',
+  action: function() {
+    return this.value
+  }
+};
+
+var stateful = Stateful(object);
+var state = {
   onInvoke() {
     // first time it is assigned for an object
   },
@@ -41,33 +51,143 @@ var state1 = {
   onExit() {
     // every time it is transitioned away
   },
-  onDestroy() {
-    // when object is destroyed
-  },
-  onDecorate(stateEnabledObject) {
+  onDecorate(hostObject) {
+    const { action } = hostObject;
     return {
-      f1() {
-
+      value: 'state',
+      action() {
+        return action() + ' applied';
       }
     }
   }
 };
 
-var s1 = Stateful(this);
+object.action() === 'no state';
+stateful.push(state);
+object.action() === 'state applied';
 
-s1.push(state1);
-s1.current() === state1;
-s1.list() === [state1];
-state1 = s1.pop();
-
+stateful.current() === state;
+stateful.list() === [state];
+state === stateful.pop();
 ```
 
 ## Usage
 
+### Stateful API
+
+When creating a `Stateful` for a host object you manage the current set of states applied through the `Stateful` object.
+
+```js
+var object = {
+  action(a, b) {
+    return a + b;
+  }
+};
+var stateful = Stateful(object);
+```
+
+Once a `Stateful` object is created it can be used to transition to different states. Typically a state machine will benefit from allowing states to be stacked on top of one another. In this way, states can be focused and reused.
+
+```js
+stateful.transition([stateA, stateB]);
+stateful.transition(stateA);
+```
+
+A `Stateful` object can have states applied over time, if different aspects of an application control the state of an object.
+
+```js
+stateful.transition([stateA, stateB]);
+// ...is the same as...
+stateful.reset();
+stateful.push(stateA);
+stateful.push(stateB);
+// ...is the same as...
+stateful.reset();
+stateful.push([stateA, stateB]);
+```
+
 ### State API
 
-#### Initialize a state
+A state is a normal object with the following methods.
 
+#### onInvoke
+
+A method called the first time a state is applied to an object.
+
+#### onEnter
+
+A method called every time a state is applied to an object.
+
+#### onExit
+
+A method called every time a state is unapplied to an object.
+
+#### onDecorate
+
+A method which returns an object to override values and functions on the host object.
+
+#### Example
+
+A state with all properties and a sample object.
+
+```js
+var object = {
+  a: 1,
+  b: 2,
+  action1(a, b) {
+    return a + b;
+  },
+  action2(a, b) {
+    return this.a + this.b;
+  }
+};
+```
+
+A state might change or override this object could look like this. The `onEnter` and `onExit` methods should be functional reflections.
+
+```js
+var state = {
+  onEnter() {
+    this.a === 1;
+    this.a = 2;
+  },
+  onExit() {
+    this.a === 2;
+    this.a = 1;
+  }
+}
+```
+
+A state may need to run setup functions once, with `onInvoke`.
+
+```js
+var state = function() {
+  this.used = 0;
+  this.onInvoke = function() {
+    this.used += 1;
+  }
+}
+```
+
+A state can alter the host object with `onDecorate`.
+
+```js
+var state = {
+  onDecorate(hostObject) {
+    const { a } = hostObject;
+    return {
+      a(a, b) {
+        // call the host method (this may have been altered by another state)
+        return a(a, b) + a(a, b);
+      },
+      b() {
+        // change the functionality completely
+        return (this.a * 2) + (this.b * 2);
+      }
+    }
+  }
+}
+```
 
 ## License
 
