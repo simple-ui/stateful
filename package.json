@@ -1,5 +1,5 @@
 {
-  "name": "@adaptiveui/stateful",
+  "name": "adaptiveui-stateful",
   "version": "1.0.0",
   "description": "A (in)finite stateful machine specialized in simplifying presentation logic",
   "main": "lib/index.js",

@@ -15,7 +15,7 @@ The `Stateful` decorator can add state to any object. Typically an object would 
 Install with npm.
 
 ```sh
-npm install --save @adaptiveui/stateful
+npm install --save adaptiveui-stateful
 ```
 
 Install with bower.
