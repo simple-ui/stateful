@@ -8,4 +8,4 @@
 
 ### 1.0.0
 
-* INITIAL @adaptiveui\stateful commit
+* INITIAL @adaptiveui/stateful commit

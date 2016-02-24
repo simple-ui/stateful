@@ -63,19 +63,18 @@ var state = {
 };
 
 object.action() === 'no state';
-stateful.push(state);
+stateful.pushState(state);
 object.action() === 'state applied';
 
-stateful.current() === state;
-stateful.list() === [state];
-state === stateful.pop();
+stateful.current() === [state];
+state === stateful.popState();
 ```
 
 ## Usage
 
 ### Stateful API
 
-When creating a `Stateful` for a host object you manage the current set of states applied through the `Stateful` object.
+When creating a `Stateful` for a host object you manage the current set of states applied through the `Stateful` object itself.
 
 ```js
 var object = {
@@ -86,7 +85,7 @@ var object = {
 var stateful = Stateful(object);
 ```
 
-Once a `Stateful` object is created it can be used to transition to different states. Typically a state machine will benefit from allowing states to be stacked on top of one another. In this way, states can be focused and reused.
+Once a `Stateful` object is created it can be used to transition to different states. Typically a state machine will benefit from allowing multiple states to be applied together. In this way, state definitions do not suffer from permutation explosion. For instance, instead of `OpenWarningState` and `OpenSuccessState` you can have `OpenState`, `CloseState`, `WarningState`, and `SuccessState`.
 
 ```js
 stateful.transition([stateA, stateB]);
@@ -98,12 +97,33 @@ A `Stateful` object can have states applied over time, if different aspects of a
 ```js
 stateful.transition([stateA, stateB]);
 // ...is the same as...
-stateful.reset();
-stateful.push(stateA);
-stateful.push(stateB);
+stateful.popStates();
+stateful.pushState(stateA);
+stateful.pushState(stateB);
 // ...is the same as...
-stateful.reset();
-stateful.push([stateA, stateB]);
+stateful.popStates();
+stateful.pushStates([stateA, stateB]);
+```
+
+A `Stateful` object remembers the transitions over time and can `rewind` state values, this is useful for _blips_ where you apply a state and then return to your previous state. As an example, if you were building a game you may want to go into attach mode, but go back to whatever you were doing after danger the danger is gone. A `Stateful` object tracks your last state.
+
+```js
+AttackState = {
+  onEnter() {
+    mediator.on('isEnemyFarAway', function() {
+      // attack state does not know the last state, but it wants to end attacking
+      stateful.rewind();
+    });
+  }
+};
+DetectEnemyState = {
+  onEnter() {
+    mediator.on('isEnemyNearby', function() {
+      stateful.transition(AttackState);
+    });
+  }
+};
+stateful.transition([FarmState, DetectEnemyState]);
 ```
 
 ### State API
