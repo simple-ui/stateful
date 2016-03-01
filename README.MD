@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.org/adaptiveui/stateful.svg?branch=master)](https://travis-ci.org/adaptiveui/stateful)
 [![Dependency Status](https://david-dm.org/adaptiveui/stateful.svg)](https://david-dm.org/adaptiveui/stateful.svg?style=flat-square)
 
-#### @adaptiveui/stateful
+#### adaptiveui-stateful
 
 A (in)finite state machine specialized in simplifying presentation logic.
 
@@ -31,7 +31,7 @@ This library requires a small set of lodash. Use [lodash-modularize](https://www
 ## Quick Usage
 
 ```js
-import Stateful from "adaptiveui/stateful"
+import Stateful from "adaptiveui-stateful"
 
 var object = {
   value: 'no state',
