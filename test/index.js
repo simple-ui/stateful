@@ -6,8 +6,8 @@ test('State Creation', (test) => {
 
   var o = {};
   var cloned = _.clone(o);
-  var stateful = Stateful(o);
-  var stateful2 = Stateful.create(o);
+  var stateful = new Stateful(o);
+  var stateful2 = new Stateful(o);
 
   test.equal(typeof stateful.pushState, 'function', 'stateful can push one state');
   test.equal(typeof stateful.popState, 'function', 'stateful can pop one state');
@@ -47,7 +47,7 @@ test('State Events', (test) => {
     }
   };
 
-  var stateful = Stateful(o);
+  var stateful = new Stateful(o);
 
   stateful.pushState(stateEvents);
   test.equal(events.onInvoke, true, 'onInvoke is called');
@@ -79,7 +79,7 @@ test('State Pushing', (test) => {
     }
   };
 
-  var stateful = Stateful(o);
+  var stateful = new Stateful(o);
 
   stateful.pushState(state);
   stateful.pushState(state);

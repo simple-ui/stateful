@@ -3,6 +3,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/adaptiveui/stateful/badge.svg?branch=master)](https://coveralls.io/github/adaptiveui/stateful?branch=master)
 [![Build Status](https://travis-ci.org/adaptiveui/stateful.svg?branch=master)](https://travis-ci.org/adaptiveui/stateful)
 [![Dependency Status](https://david-dm.org/adaptiveui/stateful.svg)](https://david-dm.org/adaptiveui/stateful.svg?style=flat-square)
+[![npm version](https://badge.fury.io/js/adaptiveui-stateful.svg)](https://badge.fury.io/js/adaptiveui-stateful)
 
 #### adaptiveui-stateful
 
