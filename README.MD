@@ -1,11 +1,11 @@
 # Stateful
 
-[![Coverage Status](https://coveralls.io/repos/github/adaptiveui/stateful/badge.svg?branch=master)](https://coveralls.io/github/adaptiveui/stateful?branch=master)
-[![Build Status](https://travis-ci.org/adaptiveui/stateful.svg?branch=master)](https://travis-ci.org/adaptiveui/stateful)
-[![Dependency Status](https://david-dm.org/adaptiveui/stateful.svg)](https://david-dm.org/adaptiveui/stateful.svg?style=flat-square)
-[![npm version](https://badge.fury.io/js/adaptiveui-stateful.svg)](https://badge.fury.io/js/adaptiveui-stateful)
+[![Coverage Status](https://coveralls.io/repos/github/simple-ui/stateful/badge.svg?branch=master)](https://coveralls.io/github/simple-ui/stateful?branch=master)
+[![Build Status](https://travis-ci.org/simple-ui/stateful.svg?branch=master)](https://travis-ci.org/simple-ui/stateful)
+[![Dependency Status](https://david-dm.org/simple-ui/stateful.svg)](https://david-dm.org/simple-ui/stateful.svg?style=flat-square)
+[![npm version](https://badge.fury.io/js/simple-ui_stateful.svg)](https://badge.fury.io/js/simple-ui_stateful)
 
-#### adaptiveui-stateful
+#### simple-ui_stateful
 
 A (in)finite state machine specialized in simplifying presentation logic.
 
@@ -16,13 +16,13 @@ The `Stateful` decorator can add state to any object. Typically an object would 
 Install with npm.
 
 ```sh
-npm install --save adaptiveui-stateful
+npm install --save simple-ui_stateful
 ```
 
 Install with bower.
 
 ```sh
-bower install --save adaptiveui-stateful
+bower install --save simple-ui_stateful
 ```
 
 ### Lodash Dependency
@@ -32,7 +32,7 @@ This library requires a small set of lodash. Use [lodash-modularize](https://www
 ## Quick Usage
 
 ```js
-import Stateful from "adaptiveui-stateful"
+import Stateful from "simple-ui_stateful"
 
 var object = {
   value: 'no state',
@@ -212,11 +212,11 @@ var state = {
 
 ## License
 
-MIT © [mwjaworski](http://adaptiveui.io)
+MIT © [mwjaworski](http://simple-ui.io)
 
 This software is released under the MIT license:
 
-Copyright (c) 2016 mwjaworski mjaworski@acm.org
+Copyright (c) 2017 mwjaworski mjaworski@acm.org
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in

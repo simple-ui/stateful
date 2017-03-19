@@ -8,6 +8,11 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
+### 1.1.1
+
+- ADDED JSCS support
+- CONVERTED to SimpleUI
+
 ### 1.1.0
 
 * REMOVED Stateful.create method, just use `new Stateful()`
@@ -18,4 +23,4 @@
 
 ### 1.0.0
 
-* INITIAL adaptiveui-stateful commit
+* INITIAL simple-ui_stateful commit
