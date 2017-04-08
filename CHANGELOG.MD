@@ -8,7 +8,11 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-### 1.1.1
+### 1.1.2
+
+- MOVED to @simple-ui npm organization
+
+### 1.1.2
 
 - ADDED JSCS support
 - CONVERTED to SimpleUI
@@ -23,4 +27,4 @@
 
 ### 1.0.0
 
-* INITIAL simple-ui_stateful commit
+* INITIAL @simple-ui/stateful commit

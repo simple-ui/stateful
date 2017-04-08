@@ -3,9 +3,9 @@
 [![Coverage Status](https://coveralls.io/repos/github/simple-ui/stateful/badge.svg?branch=master)](https://coveralls.io/github/simple-ui/stateful?branch=master)
 [![Build Status](https://travis-ci.org/simple-ui/stateful.svg?branch=master)](https://travis-ci.org/simple-ui/stateful)
 [![Dependency Status](https://david-dm.org/simple-ui/stateful.svg)](https://david-dm.org/simple-ui/stateful.svg?style=flat-square)
-[![npm version](https://badge.fury.io/js/simple-ui_stateful.svg)](https://badge.fury.io/js/simple-ui_stateful)
+[![npm version](https://badge.fury.io/js/@simple-ui/stateful.svg)](https://badge.fury.io/js/@simple-ui/stateful)
 
-#### simple-ui_stateful
+#### @simple-ui/stateful
 
 A (in)finite state machine specialized in simplifying presentation logic.
 
@@ -16,13 +16,13 @@ The `Stateful` decorator can add state to any object. Typically an object would 
 Install with npm.
 
 ```sh
-npm install --save simple-ui_stateful
+npm install --save @simple-ui/stateful
 ```
 
 Install with bower.
 
 ```sh
-bower install --save simple-ui_stateful
+bower install --save @simple-ui/stateful
 ```
 
 ### Lodash Dependency
@@ -32,7 +32,7 @@ This library requires a small set of lodash. Use [lodash-modularize](https://www
 ## Quick Usage
 
 ```js
-import Stateful from "simple-ui_stateful"
+import Stateful from "@simple-ui/stateful"
 
 var object = {
   value: 'no state',
